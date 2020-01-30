@@ -230,8 +230,6 @@ memset(line,0,sizeof(line));
 			continue;
 			trim(line);
 		//if(root == NULL)
-		if(*(line+(strlen(line)-1))=='\n')
-				*(line+(strlen(line)-1))=0;
 		root = insert(root, line,strlen(line)); 	
 		//else
 			//insert(root, line,strlen(line)); 
