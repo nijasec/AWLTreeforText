@@ -12,6 +12,20 @@ struct Node
 	int height; 
 }; 
 
+//Delete Tree
+void deleteTree(struct Node* node)  
+{  
+    if (node == NULL) return;  
+  
+    /* first delete both subtrees */
+    deleteTree(node->left);  
+    deleteTree(node->right);  
+      
+    /* then delete the node */
+    printf("\n Deleting node: %s",node->data);  
+	free(node->data);
+    free(node);  
+} 
 //searching for data
 int iterativeSearch(struct Node* root, char *data) 
 { 
@@ -230,7 +244,7 @@ memset(line,0,sizeof(line));
 			continue;
 			trim(line);
 		//if(root == NULL)
-		root = insert(root, line,strlen(line)); 	
+		root = insert(root, line,strlen(line)); //root may change while balancing	
 		//else
 			//insert(root, line,strlen(line)); 
 		
@@ -291,15 +305,16 @@ int k;
 				break;
 				case 'p':
 				
+				inorder(root);
 				
-				
-				preOrder(root);
+				//preOrder(root);
 				break;
 				
 			}
 			
 		}
-
+//Deallocate
+deleteTree(root);
 return 0; 
 } 
 /* Given a non-empty binary search tree, return the 
